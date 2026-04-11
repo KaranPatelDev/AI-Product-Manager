@@ -1,0 +1,10 @@
+project_id = "urpfzkeuxrrpvieukndt"
+
+[functions.analyze-startup]
+verify_jwt = false
+
+[functions.feedback-simulator]
+verify_jwt = false
+
+[functions.gtm-strategy]
+verify_jwt = false
