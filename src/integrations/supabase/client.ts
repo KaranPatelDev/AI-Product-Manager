@@ -4,11 +4,25 @@ import type { Database } from './types';
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 const SUPABASE_PUBLISHABLE_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+export const isSupabaseConfigured = Boolean(SUPABASE_URL && SUPABASE_PUBLISHABLE_KEY);
+
+const fallbackSupabaseUrl = "https://placeholder.supabase.co";
+const fallbackSupabaseKey =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.placeholder.placeholder";
 
 // Import the supabase client like this:
 // import { supabase } from "@/integrations/supabase/client";
 
-export const supabase = createClient<Database>(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
+if (!isSupabaseConfigured) {
+  console.error(
+    "Supabase env vars are missing. Set VITE_SUPABASE_URL and VITE_SUPABASE_PUBLISHABLE_KEY in your deployment environment."
+  );
+}
+
+export const supabase = createClient<Database>(
+  SUPABASE_URL || fallbackSupabaseUrl,
+  SUPABASE_PUBLISHABLE_KEY || fallbackSupabaseKey,
+  {
   auth: {
     storage: localStorage,
     persistSession: true,

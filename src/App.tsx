@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AuthProvider } from "@/hooks/use-auth";
 import { AnimatePresence } from "framer-motion";
+import { DeploymentNotice } from "@/components/DeploymentNotice";
 
 const LandingPage = lazy(() => import("./pages/LandingPage"));
 const Index = lazy(() => import("./pages/Index"));
@@ -40,6 +41,7 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <AuthProvider>
+        <DeploymentNotice />
         <Toaster />
         <Sonner />
         <BrowserRouter>
