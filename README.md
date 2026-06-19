@@ -310,5 +310,3 @@ Contributions are welcome! Here's the standard flow:
 
 Please follow the existing code style and include tests for new behavior where applicable.
 
----
-*This README was generated with ❤️ by [ReadmeBuddy](https://readmebuddy.com)*
